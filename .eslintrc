@@ -1,0 +1,9 @@
+{
+  "extends": [
+    "@sparkgeo/eslint-config-react"
+  ],
+  "rules": {
+    "jsx-quotes": "off",
+    "react/no-array-index-key": "off"
+  }
+}
