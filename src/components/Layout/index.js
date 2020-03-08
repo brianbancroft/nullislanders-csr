@@ -1,13 +1,3 @@
-import React from 'react'
-import { GenericContainer, SampleWidget } from '..'
-import HomeQuery from '../HomeQuery'
-
-const Layout = () => {
-  return (
-    <>
-      <HomeQuery />
-    </>
-  )
-}
+import Layout from './Layout'
 
 export default Layout

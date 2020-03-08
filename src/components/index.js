@@ -6,3 +6,5 @@ export { default as Layout } from './Layout/index'
 export { default as SampleWidget } from './SampleWidget/index'
 
 export { default as HomeQuery } from './HomeQuery'
+export { default as SiteHeader } from './SiteHeader'
+export { default as SiteFooter } from './SiteFooter'
