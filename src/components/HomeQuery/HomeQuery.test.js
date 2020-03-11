@@ -63,6 +63,9 @@ describe('HomeQuery component', () => {
 
       expect(urlElement).toBeTruthy()
     })
+
+    it('displays no more than 50 results', () => {})
+    it('displays entirely different results for a second page of pagination', () => {})
   })
 
   describe('when the data cannot load due to error', () => {
