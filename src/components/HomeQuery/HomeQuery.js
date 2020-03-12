@@ -7,7 +7,7 @@ import { useQuery } from '@apollo/react-hooks'
 import { PaginationDisplay } from '..'
 
 const limit = 12
-const offset = 20
+const offset = 24
 
 export const GET_ALL_ARTICLES = gql`
   query getPagePosts {
@@ -61,7 +61,7 @@ function HomeQuery() {
       <PaginationDisplay
         limit={limit}
         offset={offset}
-        numberItems={data.articleFeed.numberItems}
+        numberItems={data.articleFeed.numberArticles}
       />
     </Box>
   )
