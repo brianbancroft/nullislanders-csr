@@ -4,6 +4,9 @@
   ],
   "rules": {
     "jsx-quotes": "off",
-    "react/no-array-index-key": "off"
-  }
+    "react/no-array-index-key": "off",
+    "no-restricted-globals": "warn",
+
+  },
+  "globals": {"location": true }
 }

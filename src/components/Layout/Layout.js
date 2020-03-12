@@ -1,17 +1,21 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { Main } from 'grommet'
-import { HomeQuery, SiteHeader, SiteFooter } from '..'
 
-const Layout = () => {
+import { SiteHeader, SiteFooter } from '..'
+
+const Layout = ({ children }) => {
   return (
     <>
       <SiteHeader />
-      <Main>
-        <HomeQuery />
-      </Main>
+      <Main>{children}</Main>
       <SiteFooter />
     </>
   )
+}
+
+Layout.propTypes = {
+  children: PropTypes.node.isRequired,
 }
 
 export default Layout

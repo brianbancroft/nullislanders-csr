@@ -1,17 +1,16 @@
 import React from 'react'
 import { Box, Text } from 'grommet'
-
+import PropTypes from 'prop-types'
 import { gql } from 'apollo-boost'
 import { useQuery } from '@apollo/react-hooks'
 
 import { PaginationDisplay } from '..'
 
-const limit = 12
-const offset = 24
+const LIMIT = 12
 
 export const GET_ALL_ARTICLES = gql`
-  query getPagePosts {
-    articleFeed(limit: ${limit}, offset: ${offset}) {
+  query getPagePosts($limit: Int!, $offset: Int!) {
+    articleFeed(limit: $limit, offset: $offset) {
       cursor
       numberArticles
       articles {
@@ -26,8 +25,13 @@ export const GET_ALL_ARTICLES = gql`
 /**
  * Queries all of the posts and displays them
  */
-function HomeQuery() {
-  const { loading, error, data } = useQuery(GET_ALL_ARTICLES)
+function HomeQuery({ page }) {
+  const limit = LIMIT
+  const offset = limit * (page - 1)
+
+  const { loading, error, data } = useQuery(GET_ALL_ARTICLES, {
+    variables: { limit, offset },
+  })
 
   if (loading) return <h2>Loading</h2>
   if (error || !data) return <h2>error</h2>
@@ -62,11 +66,14 @@ function HomeQuery() {
         limit={limit}
         offset={offset}
         numberItems={data.articleFeed.numberArticles}
+        page={page}
       />
     </Box>
   )
 }
 
-HomeQuery.propTypes = {}
+HomeQuery.propTypes = {
+  page: PropTypes.number.isRequired,
+}
 
 export default HomeQuery
