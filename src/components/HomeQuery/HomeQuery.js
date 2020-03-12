@@ -1,13 +1,19 @@
 import React from 'react'
-import { Box, Heading, Text } from 'grommet'
+import { Box, Text } from 'grommet'
 
 import { gql } from 'apollo-boost'
 import { useQuery } from '@apollo/react-hooks'
 
+import { PaginationDisplay } from '..'
+
+const limit = 12
+const offset = 20
+
 export const GET_ALL_ARTICLES = gql`
   query getPagePosts {
-    articleFeed(limit: 15, offset: 20) {
+    articleFeed(limit: ${limit}, offset: ${offset}) {
       cursor
+      numberArticles
       articles {
         url
         title
@@ -52,6 +58,11 @@ function HomeQuery() {
   return (
     <Box direction="column" fill>
       <Posts />
+      <PaginationDisplay
+        limit={limit}
+        offset={offset}
+        numberItems={data.articleFeed.numberItems}
+      />
     </Box>
   )
 }
